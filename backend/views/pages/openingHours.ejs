@@ -1,0 +1,110 @@
+<%
+  // 현재 시간 관련 로직
+  const now = new Date();
+  const hours = now.getHours();
+  const currentTime = now.toLocaleTimeString('ko-KR', { 
+    hour: '2-digit', 
+    minute: '2-digit' 
+  });
+  const isOpen = hours >= 9 && hours < 22;
+
+  // 테스트 모드 기본값
+  let testMode = false;
+  let testHour = 9;
+%>
+
+<div class="opening-hours">
+  <div class="content-wrapper">
+    <h2>이용시간 안내</h2>
+    <div class="time-container">
+      <div class="time-badge">
+        <span class="time">09:00 ~ 22:00</span>
+      </div>
+      <div class="status-badge <%= isOpen ? 'open' : 'closed' %>">
+        <span class="dot"></span>
+        <span class="status">
+          <%= isOpen ? '현재 운영중' : '현재 마감' %>
+        </span>
+      </div>
+      <div class="current-time">
+        현재 시간: <%= currentTime %>
+      </div>
+
+      <!-- 테스트 모드 컨트롤 -->
+      <div class="test-mode-container">
+        <div class="test-controls">
+          <label>
+            <input 
+              type="checkbox" 
+              id="testModeCheckbox"
+              <%- testMode ? 'checked' : '' %>
+            >
+            테스트 모드
+          </label>
+          <input 
+            type="number" 
+            min="0" 
+            max="23" 
+            value="<%= testHour %>"
+            id="testHourInput"
+            class="<%- testMode ? 'block' : 'none' %>"
+          >
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 테스트 모드 동작을 위한 JavaScript -->
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const testModeCheckbox = document.getElementById('testModeCheckbox');
+    const testHourInput = document.getElementById('testHourInput');
+    const statusBadge = document.querySelector('.status-badge');
+    const statusText = statusBadge.querySelector('.status');
+    const currentTimeDiv = document.querySelector('.current-time');
+
+    const updateStatus = (hours) => {
+      const isOpen = hours >= 9 && hours < 22;
+      statusBadge.className = `status-badge ${isOpen ? 'open' : 'closed'}`;
+      statusText.textContent = isOpen ? '현재 운영중' : '현재 마감';
+    };
+
+    const updateCurrentTime = () => {
+      if (!testModeCheckbox.checked) {
+        const now = new Date();
+        currentTimeDiv.textContent = '현재 시간: ' + 
+          now.toLocaleTimeString('ko-KR', { 
+            hour: '2-digit', 
+            minute: '2-digit' 
+          });
+        updateStatus(now.getHours());
+      }
+    };
+
+    // 테스트 모드 체크박스 이벤트
+    testModeCheckbox.addEventListener('change', function() {
+      testHourInput.style.display = this.checked ? 'block' : 'none';
+      if (!this.checked) {
+        updateCurrentTime();
+      } else {
+        updateStatus(parseInt(testHourInput.value));
+        currentTimeDiv.textContent = `현재 시간: ${String(testHourInput.value).padStart(2, '0')}:00`;
+      }
+    });
+
+    // 테스트 시간 입력 이벤트
+    testHourInput.addEventListener('change', function() {
+      if (testModeCheckbox.checked) {
+        const hours = parseInt(this.value);
+        updateStatus(hours);
+        currentTimeDiv.textContent = `현재 시간: ${String(hours).padStart(2, '0')}:00`;
+      }
+    });
+
+    // 실시간 시간 업데이트 (테스트 모드가 아닐 때)
+    if (!testModeCheckbox.checked) {
+      setInterval(updateCurrentTime, 60000);
+    }
+  });
+</script>

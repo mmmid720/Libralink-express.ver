@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LibraLink - 홈</title>
+    <!-- 전체 CSS 스타일 설정 -->
+    <link rel="stylesheet" href="/style.css">
+    <!-- CSS 파일 연결 -->
+    <link rel="stylesheet" href="/main.css">
+    <link rel="stylesheet" href="/navbar.css">
+    <link rel="stylesheet" href="/noticeBoard.css">
+    <link rel="stylesheet" href="/searchBar.css">
+    <link rel="stylesheet" href="/openingHours.css">
+    <link rel="stylesheet" href="/footer.css">
+</head>
+<body>
+    <div class="main">
+        <!-- 네비게이션 바 포함 -->
+        <%- include('navbar') %>
+
+        <!-- 검색 섹션 -->
+        <div class="search-section">
+            <div class="overlay"></div>
+            <div class="main-search-container">
+                <%- include('./pages/searchBar') %>
+            </div>
+        </div>
+
+        <!-- 콘텐츠 섹션 -->
+        <div class="content-container">
+            <%- include('./pages/noticeBoard') %>
+            <%- include('./pages/openingHours') %>
+        </div>
+
+        <!-- 푸터 포함 -->
+        <%- include('footer') %>
+    </div>
+</body>
+</html>

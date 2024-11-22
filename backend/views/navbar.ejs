@@ -1,0 +1,180 @@
+<!-- navbar.ejs -->
+<%
+const menuItems = [
+  {
+    id: 'best',
+    title: '인기 도서',
+    items: [
+      {
+        title: '월간 인기도서',
+        description: '이번 달 가장 인기있는 도서!',
+        icon: '⭐',
+        path: '/monthlybestbook'
+      },
+      {
+        title: '주간 인기도서',
+        description: '이번 주 가장 인기있는 도서!.',
+        icon: '🔥',
+        path: '/weeklybestbook'
+      },
+    ]
+  },
+  {
+    id: 'community',
+    title: '열린마당',
+    items: [
+      {
+        title: '공지사항',
+        description: '도서관 공지 안내',
+        icon: '📢',
+        path: '/noticeboard'
+      },
+      {
+        title: '자유 게시판',
+        description: '자유롭게 작성하는 게시판',
+        icon: '🌍',
+        path: '/freeboard'
+      },
+    ]
+  },
+  {
+    id: 'info',
+    title: '도서관 안내',
+    items: [
+      {
+        title: '이용 안내',
+        description: '도서관 이용 안내와 제제 규칙',
+        icon: '❗',
+        path: '/libraryinfo'
+      },
+    ]
+  },
+  {
+    id: 'suggestion',
+    title: '건의사항',
+    items: [
+      {
+        title: '건의사항 게시판',
+        description: '건의사항 작성 및 확인',
+        icon: '🙋',
+        path: '/suggestionboard'
+      },
+      {
+        title: '희망도서 게시판',
+        description: '신청한 희망도서와 현황을 확인',
+        icon: '📘',
+        path: '/hopeboard'
+      },
+    ]
+  },
+  {
+    id: 'mypage',
+    title: '마이페이지',
+    items: [
+      {
+        title: '내 서재',
+        description: '대출 현황과 대출 이력을 확인',
+        icon: '📚',
+        path: '/mylibrary'
+      },
+      {
+        title: '관심 도서',
+        description: '관심도서로 추가한 도서 목록을 확인',
+        icon: '🔖',
+        path: '/mybookmark'
+      },
+    ]
+  }
+];
+
+const profileMenu = [
+  { title: '프로필 설정', path: '/profile/settings' },
+  { title: '알림', path: '/profile/notifications' },
+];
+%>
+
+<nav class="navbar">
+  <a href="/" class="navbar-brand">
+    <img src="/images/libralink_logo_192.png" alt="LibraLink Logo" class="brand-logo">
+    <span class="brand-text">LibraLink</span>
+  </a>
+
+  <div class="navbar-menu">
+    <% menuItems.forEach(menu => { %>
+      <div class="menu-item" data-menu-id="<%= menu.id %>">
+        <button class="menu-button">
+          <%= menu.title %>
+          <svg class="menu-arrow" viewBox="0 0 24 24">
+            <path d="M7 10l5 5 5-5" />
+          </svg>
+        </button>
+
+        <div class="dropdown-menu">
+          <div class="dropdown-header">
+            <h3><%= menu.title %></h3>
+            <p>원하시는 메뉴를 선택해주세요</p>
+          </div>
+          <div class="dropdown-content">
+            <% menu.items.forEach(item => { %>
+              <a href="<%= item.path %>" class="dropdown-item">
+                <span class="item-icon"><%= item.icon %></span>
+                <div class="item-info">
+                  <h4><%= item.title %></h4>
+                  <p><%= item.description %></p>
+                </div>
+                <svg class="item-arrow" viewBox="0 0 24 24">
+                  <path d="M9 18l6-6-6-6" />
+                </svg>
+              </a>
+            <% }); %>
+          </div>
+        </div>
+      </div>
+    <% }); %>
+  </div>
+
+  <div class="navbar-auth">
+    <% if (!locals.isLoggedIn) { %>
+      <button class="login-btn" onclick="window.location.href='/login'">
+        <svg class="login-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4" />
+          <polyline points="10 17 15 12 10 7" />
+          <line x1="15" y1="12" x2="3" y2="12" />
+        </svg>
+        로그인
+      </button>
+      <a href="/signup" class="signup-btn">회원가입</a>
+    <% } else { %>
+      <div class="profile-menu-container">
+        <div class="profile-button">
+          <span class="user-name"><%= locals.userName %></span>
+          <span class="profile-name">님</span>
+          <div class="profile-dropdown">
+            <% profileMenu.forEach(item => { %>
+              <a href="<%= item.path %>" class="profile-dropdown-item">
+                <%= item.title %>
+              </a>
+            <% }); %>
+            <div class="profile-dropdown-divider"></div>
+            <form action="/logout" method="POST">
+              <button type="submit" class="profile-dropdown-item">로그아웃</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    <% } %>
+  </div>
+</nav>
+
+<script>
+// 드롭다운 메뉴 동작을 위한 JavaScript
+document.querySelectorAll('.menu-item').forEach(item => {
+  item.addEventListener('mouseenter', () => {
+    item.querySelector('.dropdown-menu').classList.add('active');
+  });
+  
+  item.addEventListener('mouseleave', () => {
+    item.querySelector('.dropdown-menu').classList.remove('active');
+  });
+});
+</script>
