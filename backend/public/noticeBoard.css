@@ -1,12 +1,10 @@
 .noticeboard-board {
   background: white;
-  padding-left: 0.8rem;
-  padding-right: 0.8rem;
-  padding-top: 0.3rem;
-  padding-bottom: 1rem;
-  border-radius: 4px;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-  height: 300px;
+  padding-left: 1.5rem;
+  padding-right: 1rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 13px rgba(0,0,0,0.1);
+  height: 350px;
   display: flex;
   flex-direction: column;
 }
@@ -15,8 +13,6 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 1rem;
-  margin-top: 1rem;
   border-bottom: 1px solid #e5e5e5;
   cursor: pointer;
 }
@@ -24,7 +20,6 @@
 .noticeboard-more-btn {
   background: none;
   border: none;
-  padding: 0;
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -50,7 +45,7 @@
 
 /* 스크롤바 스타일링 */
 .noticeboard-list::-webkit-scrollbar {
-  width: 6px;
+  width: 4px;
 }
 
 .noticeboard-list::-webkit-scrollbar-track {
@@ -59,7 +54,7 @@
 
 .noticeboard-list::-webkit-scrollbar-thumb {
   background: #7402EE;
-  border-radius: 2px;
+  border-radius: 10px;
 }
 
 .noticeboard-item {

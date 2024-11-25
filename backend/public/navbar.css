@@ -1,196 +1,196 @@
 .navbar {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0.1rem 2rem;
-    background: white;
-    box-shadow: 0 2px 20px rgba(0,0,0,0.05);
-  }
-  
-  .navbar-brand {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: #7402EE;
-    text-decoration: none;
-    letter-spacing: -0.5px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.1rem 2rem;
+  background: white;
+  box-shadow: 0 2px 20px rgba(0,0,0,0.05);
+}
+
+.navbar-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #7402EE;
+  text-decoration: none;
+  letter-spacing: -0.5px;
 }
 
 .brand-logo {
-    height: 1.5em;
-    width: auto;
-    object-fit: contain;
+  height: 1.5em;
+  width: auto;
+  object-fit: contain;
 }
-  
-  .navbar-menu {
-    display: flex;
-    gap: 2rem;
-    position: relative;
+
+.navbar-menu {
+  display: flex;
+  gap: 2rem;
+  position: relative;
+}
+
+.menu-item {
+  position: relative;
+  height: 100%;
+  padding: 1rem 0;
+}
+
+.menu-button {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem;
+  background: none;
+  border: none;
+  font-size: 1rem;
+  color: #333;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.menu-button:hover {
+  color: #7402EE;
+}
+
+.menu-arrow {
+  width: 16px;
+  height: 16px;
+  stroke: currentColor;
+  stroke-width: 2;
+  fill: none;
+  transition: transform 0.2s ease;
+}
+
+.menu-item:hover .menu-arrow {
+  transform: rotate(180deg);
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%) translateY(10px);
+  min-width: 320px;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  padding: 1.5rem;
+  z-index: 100;
+  pointer-events: none; /* 초기에는 마우스 이벤트 무시 */
+}
+
+.dropdown-menu.active {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(0);
+  pointer-events: auto; /* 활성화 시에만 마우스 이벤트 허용 */
+}
+
+.dropdown-header {
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #eee;
+}
+
+.dropdown-header h3 {
+  font-size: 1.1rem;
+  color: #7402EE;
+  margin: 0 0 0.5rem 0;
+}
+
+.dropdown-header p {
+  font-size: 0.9rem;
+  color: #666;
+  margin: 0;
+}
+
+  /* 드롭다운 내부 요소들의 pointer-events 활성화 */
+  .dropdown-content {
+      pointer-events: auto;
   }
-  
-  .menu-item {
-    position: relative;
-    height: 100%;
-    padding: 1rem 0;
-  }
-  
-  .menu-button {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    padding: 0.5rem;
-    background: none;
-    border: none;
-    font-size: 1rem;
-    color: #333;
-    cursor: pointer;
-    transition: all 0.2s ease;
-  }
-  
-  .menu-button:hover {
-    color: #7402EE;
-  }
-  
-  .menu-arrow {
-    width: 16px;
-    height: 16px;
-    stroke: currentColor;
-    stroke-width: 2;
-    fill: none;
-    transition: transform 0.2s ease;
-  }
-  
-  .menu-item:hover .menu-arrow {
-    transform: rotate(180deg);
-  }
-  
-  .dropdown-menu {
-    position: absolute;
-    top: 100%;
-    left: 50%;
-    transform: translateX(-50%) translateY(10px);
-    min-width: 320px;
-    background: white;
-    border-radius: 12px;
-    box-shadow: 0 10px 40px rgba(0,0,0,0.1);
-    opacity: 0;
-    visibility: hidden;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    padding: 1.5rem;
-    z-index: 100;
-    pointer-events: none; /* 초기에는 마우스 이벤트 무시 */
-  }
-  
-  .dropdown-menu.active {
-    opacity: 1;
-    visibility: visible;
-    transform: translateX(-50%) translateY(0);
-    pointer-events: auto; /* 활성화 시에만 마우스 이벤트 허용 */
-  }
-  
-  .dropdown-header {
-    margin-bottom: 1.5rem;
-    padding-bottom: 1rem;
-    border-bottom: 1px solid #eee;
-  }
-  
-  .dropdown-header h3 {
-    font-size: 1.1rem;
-    color: #7402EE;
-    margin: 0 0 0.5rem 0;
-  }
-  
-  .dropdown-header p {
-    font-size: 0.9rem;
-    color: #666;
-    margin: 0;
-  }
-  
-    /* 드롭다운 내부 요소들의 pointer-events 활성화 */
-    .dropdown-content {
-        pointer-events: auto;
-    }
-  
-  .dropdown-item {
-    display: flex;
-    align-items: center;
-    padding: 1rem;
-    text-decoration: none;
-    color: #333;
-    border-radius: 8px;
-    transition: all 0.2s ease;
-  }
-  
-  .dropdown-item:hover {
-    background: #f8f9fa;
-    transform: translateX(1px);
-  }
-  
-  .item-icon {
-    font-size: 1.5rem;
-    margin-right: 1rem;
-  }
-  
-  .item-info {
-    flex: 1;
-  }
-  
-  .item-info h4 {
-    margin: 0 0 0.25rem 0;
-    font-size: 1rem;
-    color: #333;
-  }
-  
-  .item-info p {
-    margin: 0;
-    font-size: 0.85rem;
-    color: #666;
-  }
-  
-  .item-arrow {
-    width: 16px;
-    height: 16px;
-    stroke: #7402EE;
-    stroke-width: 2;
-    fill: none;
-    opacity: 0;
-    transition: all 0.2s ease;
-  }
-  
-  .dropdown-item:hover .item-arrow {
-    opacity: 1;
-    transform: translateX(4px);
-  }
-  
-  
-  /* 호버 시 배경 오버레이 효과 */
-  .menu-item:hover::before {
-    content: '';
+
+.dropdown-item {
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+  text-decoration: none;
+  color: #333;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+}
+
+.dropdown-item:hover {
+  background: #f8f9fa;
+  transform: translateX(1px);
+}
+
+.item-icon {
+  font-size: 1.5rem;
+  margin-right: 1rem;
+}
+
+.item-info {
+  flex: 1;
+}
+
+.item-info h4 {
+  margin: 0 0 0.25rem 0;
+  font-size: 1rem;
+  color: #333;
+}
+
+.item-info p {
+  margin: 0;
+  font-size: 0.85rem;
+  color: #666;
+}
+
+.item-arrow {
+  width: 16px;
+  height: 16px;
+  stroke: #7402EE;
+  stroke-width: 2;
+  fill: none;
+  opacity: 0;
+  transition: all 0.2s ease;
+}
+
+.dropdown-item:hover .item-arrow {
+  opacity: 1;
+  transform: translateX(4px);
+}
+
+
+/* 호버 시 배경 오버레이 효과 */
+.menu-item:hover::before {
+  content: '';
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
   background: rgba(0,0,0,0.1);
-  backdrop-filter: blur(0.5px);
+  backdrop-filter: blur(0.1px);
   z-index: 90;
   pointer-events: none; /* 오버레이가 마우스 이벤트를 방해하지 않도록 설정 */
 }
-  
-  /* 반응형 스타일 */
-  @media (max-width: 768px) {
-    .navbar {
-      padding: 1rem;
-    }
-  
-    .navbar-menu {
-      display: none;
-    }
+
+/* 반응형 스타일 */
+@media (max-width: 768px) {
+  .navbar {
+    padding: 1rem;
   }
 
-  /* 로그인/가입 버튼 스타일 */
+  .navbar-menu {
+    display: none;
+  }
+}
+
+/* 로그인/가입 버튼 스타일 */
 .navbar-auth {
   display: flex;
   gap: 1rem;
@@ -206,17 +206,20 @@
   cursor: pointer;
   color: #333;
   font-size: 0.9rem;
-  transition: all 0.2s ease;
 }
 
 .login-icon {
   width: 18px;
   height: 18px;
-  transition: all 0.s ease;
+  transition: transform 0.2s ease;
 }
 
 .login-btn:hover {
   color: #7402EE;
+}
+
+.login-btn:hover .login-icon{
+  transform: translateX(3px);
 }
 
 .signup-btn {
@@ -372,14 +375,14 @@
   background-color: #f8f9fa;
   font-weight: bold;
   color: #333;
- }
- 
- /* 알림 아이콘과 hover */
- .profile-dropdown-item:nth-child(2):hover {
+}
+
+/* 알림 아이콘과 hover */
+.profile-dropdown-item:nth-child(2):hover {
   background-color: #f8f9fa;
   font-weight: bold;
   color: #333;
- }
+}
 
 /* 로그아웃 버튼 특별 스타일 */
 .profile-dropdown-item:last-child {
@@ -406,18 +409,18 @@
 }
 
 @media (max-width: 768px) {
-  .profile-dropdown {
-    position: fixed;
-    top: auto;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    width: 100%;
-    border-radius: 4px 4px 0 0;
-    transform: translateY(100%);
-  }
+.profile-dropdown {
+  position: fixed;
+  top: auto;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  border-radius: 4px 4px 0 0;
+  transform: translateY(100%);
+}
 
-  .profile-menu-container:hover .profile-dropdown {
-    transform: translateY(0);
-  }
+.profile-menu-container:hover .profile-dropdown {
+  transform: translateY(0);
+}
 }

@@ -122,6 +122,15 @@
     align-items: center;
 }
 
+/*.modal-content {
+    background: white;
+    padding: 30px;
+    border-radius: 5px;
+    max-width: 600px;
+    max-height: 80vh;
+    overflow-y: auto;
+    line-height: 1.6;
+} */
 .modal-content {
     background: white;
     padding: 30px;
@@ -130,7 +139,14 @@
     max-height: 80vh;
     overflow-y: auto;
     line-height: 1.6;
-  }
+    
+    /* Center positioning */
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    margin: 0 auto;
+}
 
   .modal-content h2 {
     text-align: center;
@@ -180,3 +196,17 @@
   .section-content {
     margin-left: 20px;
   }
+
+.success-message {
+    color: #2ecc71;
+    font-size: 14px;
+    margin-top: 5px;
+    display: block;
+}
+
+.error-message {
+    color: #e74c3c;
+    font-size: 14px;
+    margin-top: 5px;
+    display: block;
+}
