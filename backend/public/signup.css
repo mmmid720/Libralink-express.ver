@@ -77,7 +77,7 @@
 }
 
 .checkbox-group input[type="checkbox"] {
-    margin-right: 8px;
+    margin-right: 3px;
 }
 
 .checkbox-group input[type="checkbox"] {
@@ -106,7 +106,7 @@
     color: #6e6d6d;
     cursor: pointer;
     font-size: 11px;
-    margin-left: 10px;
+
     border-bottom:0.5px solid #dfdfdf;
 }
   
@@ -131,6 +131,7 @@
     overflow-y: auto;
     line-height: 1.6;
 } */
+
 .modal-content {
     background: white;
     padding: 30px;
@@ -148,15 +149,15 @@
     margin: 0 auto;
 }
 
-  .modal-content h2 {
+.modal-content h2 {
     text-align: center;
     margin-bottom: 20px;
     font-size: 24px;
-  }
+}
   
-  .modal-content p {
+.modal-content p {
     margin: 15px 0;
-  }
+}
   
   /* 모달 스크롤바 스타일링 */
 .modal-content::-webkit-scrollbar {
