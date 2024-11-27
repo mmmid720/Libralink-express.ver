@@ -16,6 +16,11 @@
 - npm install ejs
 - npm install axios
 
+- npm install  mongodb@5
+- npm install express-session passport passport-local
+- npm install bcrypt
+- npm install connect-mongo
+
 
 # 🛠 사용 기술
 ### frontend
