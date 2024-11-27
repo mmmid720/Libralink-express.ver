@@ -21,7 +21,6 @@
 ### frontend
 - JavaScript
 - CSS3
-- Express
 ### backend
 - Node.JS
 - Express
