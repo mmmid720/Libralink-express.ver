@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>검색 결과</title>
+  <link href="style.css" rel="stylesheet">
+  <link href="navbar.css" rel="stylesheet">
+  <link href="footer.css" rel="stylesheet">
+  <link href="result.css" rel="stylesheet">
+</head>
+<body>
+    <%- include('navbar') %>
+    <main class="result-container">
+        <div class="result-header">
+            <h1 class="result-title">검색 결과: "<span class="result-query"><%= query %></span>"</h1>
+            <form action="/search" method="POST" class="result-search-container">
+              <input 
+                type="text"
+                name="search" 
+                class="result-search-input"
+                placeholder="검색어를 입력해주세요. (서명, 저자, 출판사)"
+                value="<%= query %>"
+                required
+              />
+              <button type="submit" class="result-again-btn">
+                검색
+              </button>
+            </form>
+          </div>
+
+        <div class="result-books-grid">
+        <% if (books && books.length > 0) { %>
+            <% books.forEach(book => { %>
+            <div class="result-book-card">
+                <div class="result-book-image">
+                <% if (book.image) { %>
+                    <img src="<%= book.image %>" alt="<%= book.title %>">
+                <% } else { %>
+                    <div class="result-placeholder-image">
+                    <span>이미지 없음</span>
+                    </div>
+                <% } %>
+                </div>
+                <div class="result-book-details">
+                <h2 class="result-book-title"><%= book.title %></h2>
+                <p class="result-book-author"><%= book.author %></p>
+                <p class="result-book-publisher"><%= book.publisher %></p>
+                </div>
+            </div>
+            <% }) %>
+        <% } else { %>
+            <div class="result-no-results">
+            <span class="result-no-results-icon">📚</span>
+            <p>검색 결과가 없습니다</p>
+            <a href="/" class="result-try-again-btn">다시 검색하기</a>
+            </div>
+        <% } %>
+        </div>
+    </main>
+    <%- include('footer') %>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="/images/libralink_logo_192.png" />
+    <title>LibraLink - 이용 안내</title>
+    <!-- 전체 CSS 스타일 설정 -->
+    <link rel="stylesheet" href="/style.css">
+    <!-- CSS 파일 연결 -->
+    <link rel="stylesheet" href="/sidebar.css">
+    <link rel="stylesheet" href="/navbar.css">
+    <link rel="stylesheet" href="/libraryinfo.css">
+    <link rel="stylesheet" href="/footer.css">
+
+<body>
+    <!-- 네비게이션 바 -->
+    <%- include('navbar') %>
+    <div class="info-container">
+      <!-- 사이드 바 -->
+      <%- include('sidebar') %>   
+          <div class="info-col-md-9">
+            <h2 class="info-mb-4">서비스 이용</h2>
+            <div class="info-card info-mb-4">
+              <div class="info-card-body">
+                <h4>연체 반납</h4>
+                <ul>
+                  <li>연체 반납시, 반납일이 지난 도서의 연체 일수를 모두 합한 기간동안 대출이 정지됩니다.</li>
+                  <li>장기 연체시, 회원자격이 상실되며, 도서관 이용과 자료대출이 불가합니다.</li>
+                </ul>
+              </div>
+            </div>
+       
+            <div class="info-card-body">
+              <h4>열린마당 게시판</h4>
+              <ul>
+                <li>상업적 목적의 광고 글 (무통보 삭제)</li>
+                <li>특정인을 비방하는 글 (무통보 삭제)</li>
+                <li>지나치게 폭력적이거나 선정적인 내용 또는 사진이 포함된 글 (무통보 삭제)</li>
+              </ul>
+            </div>
+            
+          </div>
+        </div>
+       </div>
+</body>
+
+<%- include('footer') %>

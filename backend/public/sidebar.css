@@ -1,0 +1,82 @@
+.sidebar {
+    width: 220px;
+    background: #fff;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    overflow: hidden;
+  }
+  
+  .sidebar-category-item {
+    border-bottom: 1px solid #f0f0f0;
+  }
+  
+  .sidebar-category-item:last-child {
+    border-bottom: none;
+  }
+  .sidebar-category-header {
+    padding: 16px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-weight: 500;
+    color: #333;
+  }
+  
+  .sidebar-category-header:hover {
+    background-color: #f8f9fa;
+  }
+  
+  .sidebar-category-header.active {
+    background-color: #7402EE;
+    color: white;
+    font-weight: 600;
+  }
+  
+  .sidebar-category-content {
+    background-color: #fbfbfb;
+    overflow: hidden;
+    transition: all 0.3s ease;
+  }
+  
+  .sidebar-category-content a {
+    display: block;
+    padding: 12px 20px 12px 35px;
+    color: #666;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    font-size: 14px;
+    line-height: 1.5;
+  }
+  
+  .sidebar-category-content a:hover {
+    background-color: #f0f0f0;
+    color: #333;
+  }
+  
+  .sidebar-category-content a.active {
+    color: #333;
+    font-weight: 700;
+    background-color: #f8f0ff;
+  }
+  
+.sidebar-category-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out;
+}
+
+.sidebar-category-header.active + .sidebar-category-content {
+    max-height: 500px;
+}
+
+.sidebar-arrow {
+    transition: transform 0.3s ease;
+}
+  
+  /* 반응형 디자인 */
+  @media (max-width: 768px) {
+    .sidebar {
+      width: 100%;
+    }
+  }

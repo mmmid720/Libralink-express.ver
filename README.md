@@ -4,7 +4,7 @@
 ### 🙌🏻 소개
 - 도서관 웹페이지
 - Github 시작일: 2024.11.18
-- Github 마지막 수정일: 2024.11.19
+- Github 마지막 수정일: 2024.11.26
 ### 🌐 명령어
 - node server.js
 - Ctrl+C (stop)
@@ -16,12 +16,16 @@
 - npm install ejs
 - npm install axios
 
+- npm install  mongodb@5
+- npm install express-session passport passport-local
+- npm install bcrypt
+- npm install connect-mongo
+
 
 # 🛠 사용 기술
 ### frontend
 - JavaScript
 - CSS3
-- Express
 ### backend
 - Node.JS
 - Express

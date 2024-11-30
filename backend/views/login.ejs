@@ -64,46 +64,71 @@
                     </button>
                 </div>
             </form>
+            <!-- 모달 -->
+            <% if (locals.error) { %>
+                <div class="modal" id="errorModal">
+                <div class="modal-content">
+                    <h2>알림</h2>
+                    <p><%= error %></p>
+                    <button onclick="closeModal()">확인</button>
+                </div>
+                </div>
         </div>
     </div>
-
-    <script>
-        let showPassword = false;
+    <% } %>
+<script>
+    let showPassword = false;
+    
+    function togglePasswordVisibility() {
+        const passwordField = document.getElementById('passwordField');
+        const eyeIcon = document.getElementById('eyeIcon');
         
-        function togglePasswordVisibility() {
-            const passwordField = document.getElementById('passwordField');
-            const eyeIcon = document.getElementById('eyeIcon');
-            
-            showPassword = !showPassword;
-            
-            if (showPassword) {
-                passwordField.type = 'text';
-                eyeIcon.src = 'images/eye-open.png';
-            } else {
-                passwordField.type = 'password';
-                eyeIcon.src = 'images/eye-closed.png';
-            }
+        showPassword = !showPassword;
+        
+        if (showPassword) {
+            passwordField.type = 'text';
+            eyeIcon.src = 'images/eye-open.png';
+        } else {
+            passwordField.type = 'password';
+            eyeIcon.src = 'images/eye-closed.png';
         }
+    }
 
-        // 아이디 저장 기능
-        window.onload = function() {
-            const savedUsername = localStorage.getItem('savedUsername');
-            if (savedUsername) {
-                document.querySelector('input[name="username"]').value = savedUsername;
-                document.getElementById('remember').checked = true;
-            }
+    // 아이디 저장 기능
+    window.onload = function() {
+        const savedUsername = localStorage.getItem('savedUsername');
+        if (savedUsername) {
+            document.querySelector('input[name="username"]').value = savedUsername;
+            document.getElementById('remember').checked = true;
         }
+    }
 
-        document.querySelector('form').addEventListener('submit', function(e) {
-            const rememberMe = document.getElementById('remember').checked;
-            const username = document.querySelector('input[name="username"]').value;
-            
-            if (rememberMe) {
-                localStorage.setItem('savedUsername', username);
-            } else {
-                localStorage.removeItem('savedUsername');
-            }
+    document.querySelector('form').addEventListener('submit', function(e) {
+        const rememberMe = document.getElementById('remember').checked;
+        const username = document.querySelector('input[name="username"]').value;
+        
+        if (rememberMe) {
+            localStorage.setItem('savedUsername', username);
+        } else {
+            localStorage.removeItem('savedUsername');
+        }
+    });
+    document.addEventListener('DOMContentLoaded', () => {
+          const modal = document.getElementById('errorModal');
+          modal.style.display = 'block';
         });
-    </script>
+
+        function closeModal() {
+          const modal = document.getElementById('errorModal');
+          modal.style.display = 'none';
+        }
+
+        window.onclick = (event) => {
+          const modal = document.getElementById('errorModal');
+          if (event.target == modal) {
+            modal.style.display = 'none';
+          }
+        }
+</script>
 </body>
 </html>

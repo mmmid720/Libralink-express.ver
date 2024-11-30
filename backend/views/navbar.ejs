@@ -134,7 +134,7 @@ const profileMenu = [
   </div>
 
   <div class="navbar-auth">
-    <% if (!locals.isLoggedIn) { %>
+    <% if (typeof(user) === 'undefined') { %>
       <button class="login-btn" onclick="window.location.href='/login'">
         <svg class="login-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4" />
@@ -147,7 +147,7 @@ const profileMenu = [
     <% } else { %>
       <div class="profile-menu-container">
         <div class="profile-button">
-          <span class="user-name"><%= locals.userName %></span>
+          <span class="user-name"><%= user.name %></span>
           <span class="profile-name">님</span>
           <div class="profile-dropdown">
             <% profileMenu.forEach(item => { %>
@@ -167,7 +167,6 @@ const profileMenu = [
 </nav>
 
 <script>
-// 드롭다운 메뉴 동작을 위한 JavaScript
 document.querySelectorAll('.menu-item').forEach(item => {
   item.addEventListener('mouseenter', () => {
     item.querySelector('.dropdown-menu').classList.add('active');
@@ -176,5 +175,22 @@ document.querySelectorAll('.menu-item').forEach(item => {
   item.addEventListener('mouseleave', () => {
     item.querySelector('.dropdown-menu').classList.remove('active');
   });
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+  const profileButton = document.querySelector('.profile-button');
+  if (profileButton) {
+    profileButton.addEventListener('click', () => {
+      const dropdown = profileButton.querySelector('.profile-dropdown');
+      dropdown.classList.toggle('show');
+    });
+
+    document.addEventListener('click', (e) => {
+      if (!profileButton.contains(e.target)) {
+        const dropdown = profileButton.querySelector('.profile-dropdown');
+        dropdown.classList.remove('show');
+      }
+    });
+  }
 });
 </script>

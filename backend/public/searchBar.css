@@ -24,7 +24,7 @@
   width: 56px;
   background-color: #7402EE;
   border: none;
-  border-radius: 0 4px 4px 0; /* 왼쪽 모서리는 직각, 오른쪽만 둥글게 */
+  border-radius: 0 8px 8px 0; /* 왼쪽 모서리는 직각, 오른쪽만 둥글게 */
   cursor: pointer;
   display: flex;
   align-items: center;
